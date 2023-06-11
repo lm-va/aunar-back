@@ -19,6 +19,6 @@ RUN dotnet publish "aunar-back.csproj" -c Release -o /app/publish /p:UseAppHost=
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY localhost.crt /etc/ssl/certs/localhost.crt
-COPY localhost.key /etc/ssl/private/localhost.key
+COPY localhost.crt /etc/ssl/certs/
+COPY localhost.key /etc/ssl/private/
 ENTRYPOINT ["dotnet", "aunar-back.dll"]
